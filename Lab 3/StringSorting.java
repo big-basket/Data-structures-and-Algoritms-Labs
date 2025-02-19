@@ -65,8 +65,6 @@ public class StringSorting {
         int pivotIndex = partition(array, low, high);
         quickSort(array, low, pivotIndex - 1);
         quickSort(array, pivotIndex + 1, high);
-
-
     }
     
     private static int partition(String[] array, int low, int high) {
