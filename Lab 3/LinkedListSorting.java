@@ -1,5 +1,3 @@
-package Lab3;
-
 import java.util.LinkedList;
 
 public class LinkedListSorting {
