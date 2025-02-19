@@ -88,15 +88,55 @@ public class StringSorting {
         array[i] = array[j];
         array[j] = temp;
     }
+
+    private static void testSort(java.util.function.Consumer<String[]> method) {
+        String[] items = {"table", "desk", "chair", "radio", "car", "house", "glass", "book"};
+        String[] emptyArray = {};
+        String[] singleElementArray = {"single"};
+        String[] alreadySortedArray = {"apple", "banana", "cherry", "date"};
+        String[] reverseSortedArray = {"zebra", "yak", "xenon", "wolf"};
+        String[] identicalElementsArray = {"same", "same", "same", "same"};
+        
+        System.out.println("-------------------------------------------------");
+        System.out.println("Sorting using " + method);  
+        System.out.println("Original: " + Arrays.toString(items));
+        method.accept(items);
+        System.out.println("Sorted: " + Arrays.toString(items));
+        System.out.println();
+        
+        System.out.println("Original: " + Arrays.toString(emptyArray));
+        method.accept(emptyArray);
+        System.out.println("Sorted: " + Arrays.toString(emptyArray));
+        System.out.println();
+        
+        System.out.println("Original: " + Arrays.toString(singleElementArray));
+        method.accept(singleElementArray);
+        System.out.println("Sorted: " + Arrays.toString(singleElementArray));
+        System.out.println();
+        
+        System.out.println("Original: " + Arrays.toString(alreadySortedArray));
+        method.accept(alreadySortedArray);
+        System.out.println("Sorted: " + Arrays.toString(alreadySortedArray));
+        System.out.println();
+        
+        System.out.println("Original: " + Arrays.toString(reverseSortedArray));
+        method.accept(reverseSortedArray);
+        System.out.println("Sorted: " + Arrays.toString(reverseSortedArray));
+        System.out.println();
+        
+        System.out.println("Original: " + Arrays.toString(identicalElementsArray));
+        method.accept(identicalElementsArray);
+        System.out.println("Sorted: " + Arrays.toString(identicalElementsArray));
+        System.out.println();
+        
+        System.out.println("-------------------------------------------------");
+    }
     /* --------------------------------------------------------------- */
      
     // Main function to run the program
     public static void main(String[] args) {
-        String[] items = {"table", "desk", "chair", "radio", "car", "house", "glass", "book"};
-        System.out.println (Arrays.toString(items));
-        //insertionSort(items);
-        //mergeSort(items);  //uncomment to test 
-          quickSort(items, 0, items.length-1);  //uncomment to test 
-        System.out.println (Arrays.toString(items));
+        testSort(StringSorting::insertionSort);
+        testSort(StringSorting::mergeSort);
+        testSort(array -> quickSort(array, 0, array.length - 1));
     }
 }
